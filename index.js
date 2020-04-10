@@ -1,5 +1,6 @@
 var _ = require('lodash');
 var loaderUtils = require('loader-utils');
+var htmlmin = require('html-minifier');
 
 function getOptions(context) {
   if (context.options && context.options.ejsLoader) {
@@ -19,6 +20,10 @@ module.exports = function(source) {
       query[templateSetting] = new RegExp(setting, 'g');
     }
   });
+
+  if (opts.htmlmin) {
+    source = htmlmin.minify(source, opts['htmlminOptions'] || {});
+  }
 
   var template = _.template(source, _.extend({}, query, options));
   return 'module.exports = ' + template;

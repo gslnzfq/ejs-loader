@@ -24,6 +24,7 @@
   "homepage": "https://github.com/difelice/ejs-loader",
   "dependencies": {
     "loader-utils": "^0.2.7",
+    "html-minifier": "^3",
     "lodash": "^4.17.15"
   },
   "scripts": {
